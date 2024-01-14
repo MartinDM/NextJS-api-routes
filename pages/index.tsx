@@ -47,7 +47,7 @@ export default function Home({
         </h1>
 
         {isConnected ? (
-          <h2 className="subtitle">Connected to Movies DB</h2>
+          <h2 className="subtitle">Connected to MongoDB</h2>
         ) : (
           <h2 className="subtitle">No connection made 🙅‍♂️</h2>
         )}
