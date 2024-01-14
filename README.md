@@ -2,7 +2,8 @@
 
 A demo app for using Next's API routes to query a MongoDB database for movie lists.
 
-`/top` route uses Next's server-side rendering
+`/top` - Shows top 1000 movies. Uses Next's server-side rendering
+`/movies` Shows top 20 movies
 
 ### Run app in development mode
 
