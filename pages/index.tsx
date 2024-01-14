@@ -1,6 +1,6 @@
-import Head from "next/head";
-import clientPromise from "../lib/mongodb";
-import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
+import Head from 'next/head';
+import clientPromise from '../lib/mongodb';
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 
 type ConnectionStatus = {
   isConnected: boolean;
@@ -37,71 +37,49 @@ export default function Home({
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Movies Endpoint</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
+          Martin's Movies endpoint using Next.js and MongoDB! 🎞️
         </h1>
 
         {isConnected ? (
-          <h2 className="subtitle">You are connected to MongoDB</h2>
+          <h2 className="subtitle">Connected to Movies DB</h2>
         ) : (
-          <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{" "}
-            for instructions.
-          </h2>
+          <h2 className="subtitle">No connection made 🙅‍♂️</h2>
         )}
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="top" className="card">
+            <h3>🎞️ Top 1000 &rarr;</h3>
+            <p>Return the top 1000 movies from MongoDB</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          <a href="movies" className="card">
+            <h3>Top 20 &rarr;</h3>
+            <p>Return the top 20 (server-side rendered) 🚀</p>
           </a>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
+          <a href="api/movies" className="card">
+            <h3>API: 100 movies as JSON &rarr;</h3>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              Navigate to <code>/api/[year]</code> to get up to 20 movies for
+              that query
+            </p>
+          </a>
+
+          <a href="api/movies/2000" className="card">
+            <h3>API: Query [year] &rarr;</h3>
+            <p>
+              Navigate to <code>/api/movies/[year]</code> to get up to 20 movies
+              for that year
             </p>
           </a>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
 
       <style jsx>{`
         .container {
@@ -111,6 +89,7 @@ export default function Home({
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          text-align: center;
         }
 
         main {
@@ -122,59 +101,31 @@ export default function Home({
           align-items: center;
         }
 
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
         a {
           color: inherit;
           text-decoration: none;
         }
 
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
         .title {
-          margin: 0;
+          color: #417dc4;
+          text-decoration: none;
           line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
+          font-size: 3rem;
         }
 
         .subtitle {
           font-size: 2rem;
+          color: #59af57;
         }
 
         .description {
           line-height: 1.5;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
+
+          a {
+            text-decoration: underline;
+            color: cornflowerblue;
+          }
         }
 
         code {
@@ -226,10 +177,6 @@ export default function Home({
           line-height: 1.5;
         }
 
-        .logo {
-          height: 1em;
-        }
-
         @media (max-width: 600px) {
           .grid {
             width: 100%;
@@ -241,6 +188,7 @@ export default function Home({
       <style jsx global>{`
         html,
         body {
+          background: #fefefe;
           padding: 0;
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
