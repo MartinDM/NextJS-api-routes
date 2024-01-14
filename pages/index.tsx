@@ -66,13 +66,12 @@ export default function Home({
           <a href="api/movies" className="card">
             <h3>API: 100 movies as JSON &rarr;</h3>
             <p>
-              Navigate to <code>/api/[year]</code> to get up to 20 movies for
-              that query
+              Navigate to <code>/api/movies</code> to get 100 movies from the DB
             </p>
           </a>
 
           <a href="api/movies/2000" className="card">
-            <h3>API: Query [year] &rarr;</h3>
+            <h3>API: Query [year] as JSON&rarr;</h3>
             <p>
               Navigate to <code>/api/movies/[year]</code> to get up to 20 movies
               for that year

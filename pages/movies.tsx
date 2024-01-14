@@ -47,7 +47,7 @@ export async function getServerSideProps() {
       .collection('movies')
       .find({})
       .sort({ metacritic: -1 })
-      .limit(20)
+      .limit(100)
       .toArray();
 
     return {
